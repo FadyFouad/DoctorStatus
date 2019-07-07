@@ -11,8 +11,8 @@ import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
-        int []days  = {0,2,3,4,5,6};
-        int fromHour=8;
+        int []days  = {0,1,2,3,4}; // work From Sat To Wednesday
+        int fromHour=8; 
         int toHour=22;
 
         String state = getStatusOfDoctorOpenedOrClosed(days,fromHour,toHour);
@@ -35,7 +35,7 @@ public class Main {
         Calendar c = Calendar.getInstance();
         int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
         int hourNow = c.get(Calendar.HOUR_OF_DAY);
-        HashMap<Integer,String>days = new HashMap<>();
+        HashMap<Integer,String>days = new HashMap<>(); // This to Print Name of the day instead of Numbers 
         days.put(0,"Saturday");
         days.put(1,"Sunday");
         days.put(2,"Monday");
@@ -44,14 +44,14 @@ public class Main {
         days.put(5,"Thursday");
         days.put(6,"Friday");
 
-        boolean containsDay = Arrays.stream(doctorDays).anyMatch(i -> i == dayOfWeek);
-        boolean containsHour = Arrays.stream(workHours).anyMatch(i -> i == hourNow);
+        boolean containsDay = Arrays.stream(doctorDays).anyMatch(i -> i == dayOfWeek); //check if today in the array
+        boolean containsHour = Arrays.stream(workHours).anyMatch(i -> i == hourNow); //check if the hour now in the array
 
         int nextWorkDay;
         try {
-            nextWorkDay = doctorDays[dayOfWeek]+1;
+            nextWorkDay = doctorDays[dayOfWeek]+1; //get the next day in the work array 
         }catch (IndexOutOfBoundsException e){
-            nextWorkDay = doctorDays[0];
+            nextWorkDay = doctorDays[0]; //if friday is the weekend goto first day in the array 
         }
 
         if (containsDay&&containsHour){
