@@ -55,13 +55,13 @@ public class Main {
         }
 
         if (containsDay&&containsHour){
-            state.append("Doctor is available Today\n close at").append(toHour);
+            state.append("Doctor is available Today\n close at").append(toHour).append(":00"); //doctor at work
         }
         if (containsDay&&!containsHour){
-            state.append("Doctor is close " + "Open At ").append(days.get(nextWorkDay)).append(" at ").append(fromHour);
+            state.append("Doctor is close " + "Open At ").append(days.get(nextWorkDay)).append(" at ").append(fromHour).append(":00"); //doctor finished his work
         }
         if (!containsDay){
-            state.append("Doctor is not available Today\n open at").append(days.get(nextWorkDay)).append(" at ").append(toHour);
+            state.append("Doctor is not available Today\n open at").append(days.get(nextWorkDay)).append(" at ").append(toHour).append(":00"); //doctor at holiday
         }
         return state.toString();
     }
